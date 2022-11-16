@@ -27,7 +27,7 @@
         int 21h
         
         mov ah, 09h
-        mov dx,offset input1      ;stampo richiesta di input 
+        mov dx,offset input2      ;stampo richiesta di input 
         int 21h
         
         mov ah,01h
