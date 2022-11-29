@@ -1,0 +1,23 @@
+;scelta del modello
+.model small 
+
+;scelta dello stack
+.stack 100h
+
+;segmento data
+.data
+
+
+;segmento code
+.code
+	.start up
+
+		mov ax,@data	;sposto .data nel segmento dati
+		mov ds,ax  
+
+ 
+
+ 		mov ah,4ch		;contrtollo sistema operativo
+ 		int 21h
+
+end
