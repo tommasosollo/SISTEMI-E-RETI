@@ -16,22 +16,35 @@
     acapo db ,13,10,'$'
     
 .code
-    .startup 
+    .startup  
+    
+    
 
         mov ax, @data     ;caricamento segmento dati in ds
         mov ds, ax 
+                      
+                      
+        riprov:
+            mov ah, 09h
+            mov dx, offset numero    ;visualizzaione stringa di input
+            int 21h 
+                
+            mov ah, 01h             
+            int 21h 
+            mov NC, al                ;richiesta input 
+                
+            mov ah,09h
+            mov dx, offset acapo               ;formattazione
+            int 21h
         
-        mov ah, 09h
-        mov dx, offset numero    ;visualizzaione stringa di input
-        int 21h 
+         cmp NC, 30H
+         jge c2
+         jmp riprov
+         
+         c2:
+            cmp NC, 39h
+            jg riprov
             
-        mov ah, 01h             
-        int 21h 
-        mov NC, al                ;richiesta input 
-            
-        mov ah,09h
-        mov dx, offset acapo               ;formattazione
-        int 21h
 
 
         inizio:
